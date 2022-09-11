@@ -8,8 +8,8 @@ Thanks to SimCSE(Gao et al., EMNLP 2021)! Our work mainly based on [SimCSE repo]
 
   - [Overview](#overview)
   - [Model List](#model-list)
-  - [Use ESimCSE with Huggingface](#use-simcse-with-huggingface)
-  - [Train ESimCSE](#train-simcse)
+  - [Use ESimCSE with Huggingface](#use-esimcse-with-huggingface)
+  - [Train ESimCSE](#train-esimcse)
     - [Requirements](#requirements)
     - [Evaluation](#evaluation)
     - [Training](#training)
@@ -27,10 +27,10 @@ SimCSE adopts dropout as data augmentation and encodes an input sentence twice i
 Our released models are listed as following. You can import these models by using [HuggingFace's Transformers](https://github.com/huggingface/transformers).
 |              Model              | Avg. STS |
 |:-------------------------------|:--------:|
-|  [unsup-simcse-bert-base-uncased](https://huggingface.co/ffgcc/esimcse-bert-base-uncased) |   78.27 |
-| [unsup-simcse-bert-large-uncased](https://huggingface.co/ffgcc/unsup-simcse-bert-large-uncased) |   79.31  |
-|    [unsup-simcse-roberta-base](https://huggingface.co/ffgcc/unsup-simcse-roberta-base)    |   77.44  |
-|    [unsup-simcse-roberta-large](https://huggingface.co/ffgcc/unsup-simcse-roberta-large)   |   79.45  |
+|  [unsup-esimcse-bert-base-uncased](https://huggingface.co/ffgcc/esimcse-bert-base-uncased) |   78.27 |
+| [unsup-esimcse-bert-large-uncased](https://huggingface.co/ffgcc/esimcse-bert-large-uncased) |   79.31  |
+|    [unsup-esimcse-roberta-base](https://huggingface.co/ffgcc/esimcse-roberta-base)    |   77.44  |
+|    [unsup-esimcse-roberta-large](https://huggingface.co/ffgcc/esimcse-roberta-large)   |   79.45  |
 
 ## Use ESimCSE with Huggingface
 
@@ -122,10 +122,10 @@ which is expected to output the results in a tabular format:
 
 Arguments for the evaluation script are as follows,
 
-* `--model_name_or_path`: The name or path of a `transformers`-based pre-trained checkpoint. You can directly use the models in the above table, e.g., `ffgcc/sup-simcse-bert-base-uncased`.
+* `--model_name_or_path`: The name or path of a `transformers`-based pre-trained checkpoint. You can directly use the models in the above table, e.g., `ffgcc/esimcse-bert-base-uncased`.
 * `--pooler`: Pooling method. Now we support
-    * `cls` (default): Use the representation of `[CLS]` token. A linear+activation layer is applied after the representation (it's in the standard BERT implementation). If you use **supervised SimCSE**, you should use this option.
-    * `cls_before_pooler`: Use the representation of `[CLS]` token without the extra linear+activation. If you use **unsupervised SimCSE**, you should take this option.
+    * `cls` (default): Use the representation of `[CLS]` token. A linear+activation layer is applied after the representation (it's in the standard BERT implementation). 
+    * `cls_before_pooler`: Use the representation of `[CLS]` token without the extra linear+activation. 
     * `avg`: Average embeddings of the last layer. If you use checkpoints of SBERT/SRoBERTa ([paper](https://arxiv.org/abs/1908.10084)), you should use this option.
     * `avg_top2`: Average embeddings of the last two layers.
     * `avg_first_last`: Average embeddings of the first and last layers. If you use vanilla BERT or RoBERTa, this works the best.
@@ -154,7 +154,6 @@ We explain the arguments in following:
 * `--model_name_or_path`: Pre-trained checkpoints to start with. For now we support BERT-based models (`bert-base-uncased`, `bert-large-uncased`, etc.) and RoBERTa-based models (`RoBERTa-base`, `RoBERTa-large`, etc.).
 * `--temp`: Temperature for the contrastive loss.
 * `--pooler_type`: Pooling method. It's the same as the `--pooler_type` in the [evaluation part](#evaluation).
-* `--mlp_only_train`: We have found that for unsupervised SimCSE, it works better to train the model with MLP layer but test the model without it. You should use this argument when training unsupervised SimCSE models.
 * `--hard_negative_weight`: If using hard negatives (i.e., there are 3 columns in the training file), this is the logarithm of the weight. For example, if the weight is 1, then this argument should be set as 0 (default value).
 * `--do_mlm`: Whether to use the MLM auxiliary objective. If True:
   * `--mlm_weight`: Weight for the MLM objective.
