@@ -148,10 +148,11 @@ Following SimCSE, we sample 1 million sentences from English Wikipedia; You can 
 **Training scripts**
 
 We provide example training scripts for infocse. In `infocse-bert-base.sh`, we provide a single-GPU (or CPU) example.
-For the base model, we init our model with [Luyu/condenser](https://huggingface.co/Luyu/condenser). For the large model, we first reproduce the condenser-bert-large since there is no official model. We release the model in [https://huggingface.co/ffgcc/condenser-bert-large-uncased](https://huggingface.co/ffgcc/condenser-bert-large-uncased).
+
+
 We explain the arguments in following:
 * `--train_file`: Training file path. We support "txt" files (one line for one sentence) . You can use Wikipedia or you can use your own data with the same format.
-* `--model_name_or_path`: Pre-trained checkpoints to start with. For now we support BERT-based models (`bert-base-uncased`, `bert-large-uncased`, etc.) and RoBERTa-based models (`RoBERTa-base`, `RoBERTa-large`, etc.).
+* `--model_name_or_path`: For the base model, we init our model with [Luyu/condenser](https://huggingface.co/Luyu/condenser). For the large model, we first reproduce the condenser-bert-large since there is no official model. We release the model in [https://huggingface.co/ffgcc/condenser-bert-large-uncased](https://huggingface.co/ffgcc/condenser-bert-large-uncased).
 * `--temp`: Temperature for the contrastive loss.
 * `--pooler_type`: Pooling method. It's the same as the `--pooler_type` in the [evaluation part](#evaluation).
 * `--hard_negative_weight`: If using hard negatives (i.e., there are 3 columns in the training file), this is the logarithm of the weight. For example, if the weight is 1, then this argument should be set as 0 (default value).
