@@ -106,7 +106,7 @@ Then come back to the root directory, you can evaluate any `transformers`-based 
 ```bash
 python evaluation.py \
     --model_name_or_path ffgcc/esimcse-bert-base-uncased \
-    --pooler cls \
+    --pooler cls_before_pooler \
     --task_set sts \
     --mode test
 ```
