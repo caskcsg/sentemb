@@ -121,7 +121,7 @@ which is expected to output the results in a tabular format:
 
 Arguments for the evaluation script are as follows,
 
-* `--model_name_or_path`: The name or path of a `transformers`-based pre-trained checkpoint. You can directly use the models in the above table, e.g., `ffgcc/infocse-bert-base-uncased`.
+* `--model_name_or_path`: The name or path of a `transformers`-based pre-trained checkpoint. You can directly use the models in the above table, e.g., `ffgcc/InfoCSE-bert-base`.
 * `--pooler`: Pooling method. Now we support
     * `cls` (default): Use the representation of `[CLS]` token. A linear+activation layer is applied after the representation (it's in the standard BERT implementation). 
     * `cls_before_pooler`: Use the representation of `[CLS]` token without the extra linear+activation. 
@@ -147,7 +147,7 @@ Following SimCSE, we sample 1 million sentences from English Wikipedia; You can 
 
 **Training scripts**
 
-We provide example training scripts for infocse. In `infocse-bert-base.sh`, we provide a single-GPU (or CPU) example.
+We provide example training scripts for infocse. In `Infocse-bert-base.sh`, we provide a single-GPU (or CPU) example.
 
 
 We explain the arguments in following:
