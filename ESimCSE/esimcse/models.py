@@ -286,7 +286,6 @@ def cl_forward(cls,
     else:
         loss_final= loss
     return SequenceClassifierOutput(
-        z_temp=z1_temp,
         loss=loss_final,
         logits=cos_sim,
         hidden_states=outputs.hidden_states,

@@ -629,10 +629,10 @@ class CLTrainer(Trainer):
                 eval_z = model(**inputs)
             #import ipdb;ipdb.set_trace()
             if self.pre_z1 == None:
-                self.pre_z1 = eval_z.clone() # outputs['z_temp'].clone()
+                self.pre_z1 = eval_z.clone() 
             else :
                 now_neg_size = -self.model_args.neg_size
-                # self.pre_z1 = torch.cat((self.pre_z1,outputs['z_temp'].clone()),0)[now_neg_size:]
+                
                 self.pre_z1 = torch.cat((self.pre_z1, eval_z.clone()),0)[now_neg_size:]   
         else:
             inputs['pre_z1'] = None
