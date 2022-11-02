@@ -28,7 +28,8 @@ InfoCSE forces the representation of CLS positions to aggregate denser sentence 
 Our released models are listed as following. You can import these models by using [HuggingFace's Transformers](https://github.com/huggingface/transformers).
 |              Model              | Avg. STS |
 |:-------------------------------|:--------:|
-|  [InfoCSE-bert-base](https://huggingface.co/ffgcc/InfoCSE-bert-base) |   78.85 |
+| [InfoCSE-bert-base](https://huggingface.co/ffgcc/InfoCSE-bert-base) |   78.85 |
+| [InfoCSE-bert-base-rtd](https://huggingface.co/caskcsg/InfoCSE-bert-base-rtd) | 79.39 |
 | [InfoCSE-bert-large](https://huggingface.co/ffgcc/InfoCSE-bert-large) |   80.18  |
 
 ## Use infocse with Huggingface
